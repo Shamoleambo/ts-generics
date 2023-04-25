@@ -1,9 +1,30 @@
-function extractAndConvert<T extends object, U extends keyof T>(
-  obj: T,
-  key: U
-) {
-  return `Value ${obj[key]}`
+class DataStorage<T> {
+  private data: T[] = []
+
+  addItem(item: T) {
+    this.data.push(item)
+  }
+
+  removeItem(item: T) {
+    this.data.splice(this.data.lastIndexOf(item), 1)
+  }
+
+  getItems() {
+    return [...this.data]
+  }
 }
 
-const value = extractAndConvert({ name: 'mano' }, 'name')
-console.log(value)
+const textStorage = new DataStorage<string>()
+textStorage.addItem('Mano')
+textStorage.addItem('Vacilão')
+console.log(textStorage.getItems())
+textStorage.removeItem('Vacilão')
+console.log(textStorage.getItems())
+
+const numbersStorage = new DataStorage<number>()
+numbersStorage.addItem(1)
+numbersStorage.addItem(2)
+numbersStorage.addItem(3)
+console.log(numbersStorage.getItems())
+numbersStorage.removeItem(3)
+console.log(numbersStorage.getItems())
