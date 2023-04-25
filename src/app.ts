@@ -1,30 +1,19 @@
-class DataStorage<T extends string | number | boolean> {
-  private data: T[] = []
-
-  addItem(item: T) {
-    this.data.push(item)
-  }
-
-  removeItem(item: T) {
-    this.data.splice(this.data.lastIndexOf(item), 1)
-  }
-
-  getItems() {
-    return [...this.data]
-  }
+interface CourseGoal {
+  title: string
+  description: string
+  completeUntil: Date
 }
 
-const textStorage = new DataStorage<string>()
-textStorage.addItem('Mano')
-textStorage.addItem('Vacilão')
-console.log(textStorage.getItems())
-textStorage.removeItem('Vacilão')
-console.log(textStorage.getItems())
+function createCourseGoal(
+  title: string,
+  description: string,
+  date: Date
+): CourseGoal {
+  let courseGoal: Partial<CourseGoal> = {}
 
-const numbersStorage = new DataStorage<number>()
-numbersStorage.addItem(1)
-numbersStorage.addItem(2)
-numbersStorage.addItem(3)
-console.log(numbersStorage.getItems())
-numbersStorage.removeItem(3)
-console.log(numbersStorage.getItems())
+  courseGoal.title = title
+  courseGoal.description = description
+  courseGoal.completeUntil = date
+
+  return courseGoal as CourseGoal
+}
