@@ -17,3 +17,9 @@ function createCourseGoal(
 
   return courseGoal as CourseGoal
 }
+
+const names: Readonly<string[]> = ['Mano', 'Truta']
+// names.push('Tiu')
+// names.pop()
+
+console.log(names)
